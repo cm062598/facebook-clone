@@ -1,0 +1,142 @@
+@import "../../../../../utilities.scss";
+
+.commentSection {
+  padding: 10px 0;
+  margin: 0 20px;
+  border-top: 1px solid $lightGray;
+
+  .allMessage {
+    margin: 0 0 10px 0;
+
+    .chatWrapper {
+      display: flex;
+      margin: 0 0 10px 0;
+
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50px;
+        margin: 0 5px 0 0;
+        background-color: $lightGray;
+      }
+
+      .nameMessage_buttonWrapper {
+        position: relative;
+        max-width: 70%;
+
+        .nameMessageWrapper {
+          position: relative;
+          background-color: $secondBackground;
+          border-radius: 15px;
+          padding: 8px 12px;
+          max-width: 100%;
+          overflow: hidden;
+
+          h4 {
+            color: $black;
+            font-size: 13px;
+          }
+
+          pre {
+            color: $black;
+            font-size: 15px;
+            max-width: 100%;
+            text-align: left;
+            white-space: pre-line;
+          }
+        }
+
+        .buttonWrapper {
+          padding: 0 12px;
+          font-size: 13px;
+          color: $gray;
+
+          button {
+            background-color: transparent;
+            border: none;
+            color: $gray;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .iconWrapper {
+        display: grid;
+        place-content: center;
+        background-color: white;
+        padding: 0;
+        margin: 0 0 0 5px;
+
+        .iconCon {
+          display: grid;
+          place-content: center;
+          height: 40px;
+          width: 40px !important;
+          padding: 20px;
+          margin: -18px 0 0 0;
+          border-radius: 50px;
+          background-color: #fff;
+          cursor: pointer;
+
+          &:hover {
+            filter: brightness(0.95);
+          }
+
+          .icon {
+            color: $gray;
+            opacity: 0.3;
+            font-size: 15px;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+
+  .inputComment {
+    display: flex;
+
+    .imageContainer {
+      position: relative;
+      height: 32px;
+      width: 32px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        bottom: 0;
+        right: 0;
+        border-radius: 50px;
+        border: 2px solid white;
+        background-color: $green;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 100px;
+      }
+    }
+
+    .textAreaWrapper {
+      flex: 1;
+      display: flex;
+      background-color: $secondBackground;
+      border-radius: 15px;
+      align-items: center;
+      margin: 0 0 0 5px;
+      padding: 5px 15px;
+
+      input {
+        flex: 1;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        color: $black;
+      }
+    }
+  }
+}

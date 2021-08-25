@@ -1,0 +1,223 @@
+@import "../../../../utilities.scss";
+
+.section {
+  position: relative;
+  @include container;
+
+  header {
+    display: flex;
+    padding: 20px 20px 5px 20px;
+
+    .imgWrapper {
+      margin: 0 10px 0 0;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+      }
+    }
+
+    .nameTimeWrapper {
+      h1 {
+        font-size: 15px;
+        color: $black;
+      }
+      p {
+        font-size: 13px;
+        color: $gray;
+      }
+    }
+
+    .dotsWrapper {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      flex: 1;
+      width: 36px;
+      height: 36px;
+      color: $gray;
+      border-radius: 50px;
+      background-color: #fff;
+
+      .threeDotsWrapper {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        border-radius: 50px;
+        font-size: 25px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $secondBackground;
+        }
+
+        .icon {
+          color: $gray;
+          opacity: 0.7;
+          pointer-events: none;
+        }
+      }
+
+      .deleteWrapper {
+        position: absolute;
+        list-style: none;
+        right: 0;
+        bottom: -40px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 4px 7px rgba(0, 0, 0, 0.445);
+        color: $textBlack;
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+
+        &:hover {
+          filter: brightness(0.98);
+
+          .trashIcon {
+            transition: 0.1s;
+            opacity: 0.9;
+          }
+        }
+
+        .trashIcon {
+          color: $gray;
+          opacity: 0.6;
+          font-size: 15px;
+          margin: 0 8px 0 0;
+          transition: 0.1s;
+        }
+
+        .icon {
+          position: absolute;
+          fill: #fff;
+          font-size: 20px;
+          top: -10px;
+          right: 7px;
+          box-shadow: 0 2 3px black;
+        }
+      }
+    }
+  }
+
+  .caption {
+    padding: 10px 20px 10px 20px;
+
+    pre {
+      text-align: left;
+      white-space: pre-line;
+      font-size: 15px;
+      color: $black;
+    }
+  }
+
+  .imgWrapper {
+    // border-bottom: 1.5px solid $lightGray;
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .reactComentWrapper {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+
+    .reactWrapper {
+      display: flex;
+      align-items: center;
+
+      img {
+        border-radius: 50px;
+        width: 18px;
+        height: 18px;
+        border: 1px solid #fff;
+      }
+
+      p {
+        font-size: 15px;
+        color: $gray;
+        margin: 0 0 0 6px;
+      }
+    }
+
+    .commentWrapper {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+
+      p {
+        font-size: 15px;
+        color: $gray;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .likeCommentWrapper {
+    padding: 0 20px;
+
+    .wrapper {
+      display: flex;
+      border-top: 1.5px solid $lightGray;
+      padding: 4px 0;
+
+      div {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 7px 0;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $secondBackground;
+        }
+
+        .logo {
+          margin: 0 7px 0 0;
+          opacity: 0.5;
+          font-size: 20px;
+        }
+
+        .liked {
+          fill: $blue !important;
+          margin: 0 7px 0 0;
+          font-size: 20px;
+          animation: toLike 0.4s ease;
+        }
+
+        p {
+          font-size: 15px;
+          color: $gray;
+        }
+      }
+    }
+  }
+}
+
+@keyframes toLike {
+  0% {
+    transform: scale(0.9);
+    fill: $gray;
+  }
+  70% {
+    transform: scale(1.5) rotateZ(-10deg);
+    fill: $blue;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
