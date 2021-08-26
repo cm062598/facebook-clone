@@ -50,7 +50,6 @@
         .icon {
           font-size: 25px;
           color: $gray;
-          // back
         }
       }
     }
@@ -106,14 +105,14 @@
         overflow-y: auto;
 
         &:nth-child(2) {
-          padding: 0 16px 0 8px;
-          margin: 0 8px;
+          padding: 0 11px;
+          margin: 0 5px;
           overflow-y: hidden;
           transition: 0s;
 
           &:hover {
             overflow-y: scroll;
-            padding: 0 8px;
+            padding: 0 3px 0 11px;
           }
 
           &::-webkit-scrollbar {
@@ -159,6 +158,10 @@
           border-radius: 5px;
           border: 1px solid #c2c2c2;
           overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
 
           .iconLalagyan {
             position: absolute;
@@ -185,8 +188,8 @@
           }
 
           img {
+            flex: 1;
             width: 100%;
-            border-radius: 5px;
           }
         }
 
