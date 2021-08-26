@@ -31,10 +31,15 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import db, { storage } from "../../../firebase";
 
+// Components
+import Uploading from "./ImageUploading/Uploading";
+
 const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
   const [caption, setCaption] = useState("");
   const [imgURL, setImgURL] = useState(null);
   const [alert, setAlert] = useState("");
+  const [messageLoading, setMessageLoading] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
   const file = useRef(null);
 
   const { displayName, photoURL, uid } = user;
@@ -45,6 +50,9 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
     e.preventDefault();
 
     setAlert("");
+
+    // Loading
+    setMessageLoading(true);
 
     if (caption.trim().length > 0 || imgURL) {
       db.collection("Posts")
@@ -58,7 +66,11 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
           userID: uid,
         })
         .then((doc) => {
+          setMessageLoading(false);
+
           if (imgURL) {
+            setImageLoading(true);
+
             const uploadImage = storage
               .ref(`posts/${doc.id}`)
               .putString(imgURL, "data_url");
@@ -79,6 +91,7 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
                       { merge: true }
                     );
 
+                    setImageLoading(false);
                     setCaption("");
                     setImgURL(null);
                     document.querySelector(".contentEditable").innerText = "";
@@ -222,6 +235,14 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
 
           <p className={alertClass}>{alert}</p>
         </form>
+
+        {messageLoading && <Uploading message="Uploading" />}
+        {imageLoading && (
+          <Uploading
+            message="Image is still uploading"
+            alert="Do not close this tab or else your image won't be uploaded!"
+          />
+        )}
       </div>
     </section>
   );
