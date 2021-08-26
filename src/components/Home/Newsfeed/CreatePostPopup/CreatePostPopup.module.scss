@@ -6,21 +6,24 @@
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.623);
+  background-color: rgba(255, 255, 255, 0.781);
   z-index: 2000;
   padding: 0 20px;
   opacity: 1;
   z-index: 200;
+  display: grid;
+  place-items: center;
 
   .container {
-    position: absolute;
-    max-width: 540px;
+    // position: absolute;
+    width: 100%;
+    max-width: 500px;
     background-color: #fff;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.329);
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.534);
     border-radius: 10px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
 
     h1 {
       position: relative;
@@ -141,9 +144,9 @@
 
         .captionTextField {
           position: relative;
-          min-height: 100px;
+          min-height: 30px;
           width: 100%;
-          padding: 0 10px;
+          padding: 0 10px 50px 10px;
           resize: none;
           outline: none;
           border: none;
@@ -155,7 +158,11 @@
 
         .imageWrapper {
           position: relative;
+          height: fit-content;
           width: 100%;
+          border-radius: 5px;
+          border: 1px solid #c2c2c2;
+          overflow: hidden;
 
           .iconLalagyan {
             position: absolute;
