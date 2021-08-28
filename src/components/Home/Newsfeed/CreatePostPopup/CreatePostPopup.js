@@ -63,6 +63,7 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
           datePosted: firebase.firestore.FieldValue.serverTimestamp(),
           profilePic: photoURL,
           reactors: [],
+          image: imgURL ? "waiting" : "",
           userID: uid,
         })
         .then((doc) => {
@@ -240,7 +241,7 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
         {imageLoading && (
           <Uploading
             message="Image is still uploading"
-            alert="Do not close this tab or else your image won't be uploaded!"
+            alert="Do not close this tab or else your post won't be uploaded!"
           />
         )}
       </div>
