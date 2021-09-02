@@ -7,6 +7,7 @@ import { RiCloseFill } from "react-icons/ri";
 import {
   section,
   container,
+  header,
   iconContainer,
   icon,
   reactorsContainer,
@@ -20,15 +21,15 @@ const Reactors = ({ reactors, setToShowReactors }) => {
   return (
     <div className={section}>
       <div className={container}>
-        <h1>
-          <h4>Likes</h4>
+        <div className={header}>
+          <h4>Like{reactors.length > 1 && "s"}</h4>
           <div
             className={iconContainer}
             onClick={() => setToShowReactors(false)}
           >
             <RiCloseFill className={icon} />
           </div>
-        </h1>
+        </div>
         <div className={reactorsContainer}>
           {reactors.map((reactor) => (
             <div key={reactor.reactorID} className={reactorWrapper}>

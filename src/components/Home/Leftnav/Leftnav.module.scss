@@ -7,6 +7,10 @@
   align-self: start;
   padding: 16px 0 0 10px;
 
+  @media (max-width: "1313px") {
+    display: none;
+  }
+
   li {
     display: flex;
     align-items: center;

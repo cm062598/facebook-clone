@@ -7,6 +7,14 @@
   align-self: start;
   padding: 15px 16px 0 0;
   justify-self: flex-end;
+
+  @media (max-width: "1313px") {
+    grid-row: 1 / 2;
+  }
+
+  @media (max-width: "980px") {
+    display: none;
+  }
 }
 
 .mainWrapper {

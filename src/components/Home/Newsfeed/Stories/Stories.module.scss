@@ -11,6 +11,26 @@
   grid-gap: 10px;
   margin: 0 0 15px 0;
 
+  @media (max-width: "570px") {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    .storiesWrapper {
+      &:nth-child(4) {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: "425px") {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .storiesWrapper {
+      &:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+
   .storiesWrapper {
     position: relative;
     background-color: #fff;

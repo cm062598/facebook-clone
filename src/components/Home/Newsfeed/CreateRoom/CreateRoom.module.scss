@@ -28,6 +28,7 @@
       color: $blue;
       font-size: 15px;
       font-weight: 600;
+      white-space: nowrap;
     }
   }
 
@@ -46,6 +47,18 @@
       background-repeat: no-repeat;
       background-position: center;
       background-color: $lightGray;
+
+      @media (max-width: "480px") {
+        &:nth-child(4) {
+          display: none;
+        }
+      }
+
+      @media (max-width: "420px") {
+        &:nth-child(3) {
+          display: none;
+        }
+      }
 
       .active {
         width: 12px;

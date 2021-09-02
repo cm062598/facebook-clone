@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Styles
-import { newsFeedContainer } from "./Newsfeed.module.scss";
+import { section, newsFeedContainer } from "./Newsfeed.module.scss";
 
 // Components
 import Stories from "./Stories/Stories";
@@ -24,42 +24,44 @@ const Newsfeed = ({ user }) => {
   const [popupCreatePost, setPopupCreatePost] = useState(false);
 
   return (
-    <div className={newsFeedContainer}>
-      <Stories user={user} />
-      <CreatePost user={user} setPopupCreatePost={setPopupCreatePost} />
-      <CreateRoom user={user} />
+    <div className={section}>
+      <div className={newsFeedContainer}>
+        <Stories user={user} />
+        <CreatePost user={user} setPopupCreatePost={setPopupCreatePost} />
+        <CreateRoom user={user} />
 
-      {loading && (
-        <div>
-          <h1>Loading...</h1>
-        </div>
-      )}
+        {loading && (
+          <div>
+            <h1>Loading...</h1>
+          </div>
+        )}
 
-      {posts?.docs.map((doc) => (
-        <React.Fragment key={doc.id}>
-          {(doc.data().caption ||
-            (doc.data().image && doc.data().image !== "waiting")) && (
-            <Post
-              docId={doc.id}
-              user={user}
-              message={doc.data().caption}
-              comments={doc.data().comments}
-              datePosted={doc.data().datePosted}
-              image={doc.data().image}
-              name={doc.data().name}
-              profilePic={doc.data().profilePic}
-              reactors={doc.data().reactors}
-              userID={doc.data().userID}
-            />
-          )}
-        </React.Fragment>
-      ))}
+        {posts?.docs.map((doc) => (
+          <React.Fragment key={doc.id}>
+            {(doc.data().caption ||
+              (doc.data().image && doc.data().image !== "waiting")) && (
+              <Post
+                docId={doc.id}
+                user={user}
+                message={doc.data().caption}
+                comments={doc.data().comments}
+                datePosted={doc.data().datePosted}
+                image={doc.data().image}
+                name={doc.data().name}
+                profilePic={doc.data().profilePic}
+                reactors={doc.data().reactors}
+                userID={doc.data().userID}
+              />
+            )}
+          </React.Fragment>
+        ))}
 
-      <CreatePostPopup
-        user={user}
-        popupCreatePost={popupCreatePost}
-        setPopupCreatePost={setPopupCreatePost}
-      />
+        <CreatePostPopup
+          user={user}
+          popupCreatePost={popupCreatePost}
+          setPopupCreatePost={setPopupCreatePost}
+        />
+      </div>
     </div>
   );
 };
