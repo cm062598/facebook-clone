@@ -21,6 +21,7 @@
     .nameTimeWrapper {
       h1 {
         font-size: 15px;
+        font-weight: 600;
         color: $black;
       }
       p {
@@ -117,10 +118,9 @@
   }
 
   .imgWrapper {
-    // border-bottom: 1.5px solid $lightGray;
-
     img {
       width: 100%;
+      background-color: $gray;
       display: block;
     }
   }
@@ -133,6 +133,11 @@
     .reactWrapper {
       display: flex;
       align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
 
       img {
         border-radius: 50px;

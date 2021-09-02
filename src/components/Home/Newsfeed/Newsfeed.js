@@ -36,27 +36,23 @@ const Newsfeed = ({ user }) => {
       )}
 
       {posts?.docs.map((doc) => (
-        <>
-          {(doc.data().caption || doc.data().image) && (
-            <>
-              {doc.data().image !== "waiting" && (
-                <Post
-                  key={doc.id}
-                  docId={doc.id}
-                  user={user}
-                  message={doc.data().caption}
-                  comments={doc.data().comments}
-                  datePosted={doc.data().datePosted}
-                  image={doc.data().image}
-                  name={doc.data().name}
-                  profilePic={doc.data().profilePic}
-                  reactors={doc.data().reactors}
-                  userID={doc.data().userID}
-                />
-              )}
-            </>
+        <React.Fragment key={doc.id}>
+          {(doc.data().caption ||
+            (doc.data().image && doc.data().image !== "waiting")) && (
+            <Post
+              docId={doc.id}
+              user={user}
+              message={doc.data().caption}
+              comments={doc.data().comments}
+              datePosted={doc.data().datePosted}
+              image={doc.data().image}
+              name={doc.data().name}
+              profilePic={doc.data().profilePic}
+              reactors={doc.data().reactors}
+              userID={doc.data().userID}
+            />
           )}
-        </>
+        </React.Fragment>
       ))}
 
       <CreatePostPopup

@@ -25,20 +25,22 @@ const Comments = (props) => {
 
   const addComment = (e) => {
     e.preventDefault();
-    const docRef = db.collection("Posts").doc(docId);
 
-    docRef.set(
-      {
-        comments: firebase.firestore.FieldValue.arrayUnion({
-          name: displayName,
-          message: yourComment.trim(),
-          photoURL,
-          uid,
-          timestamp: Date.now(),
-        }),
-      },
-      { merge: true }
-    );
+    if (yourComment) {
+      const docRef = db.collection("Posts").doc(docId);
+      docRef.set(
+        {
+          comments: firebase.firestore.FieldValue.arrayUnion({
+            name: displayName,
+            message: yourComment.trim(),
+            photoURL,
+            uid,
+            timestamp: Date.now(),
+          }),
+        },
+        { merge: true }
+      );
+    }
 
     setYourComment("");
   };

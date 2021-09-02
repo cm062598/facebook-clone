@@ -26,8 +26,8 @@
       position: relative;
       text-align: center;
       font-size: 20px;
+      font-weight: 600;
       padding: 0 0 2px 0;
-      font-weight: 900;
       height: 60px;
       display: grid;
       place-items: center;
@@ -77,6 +77,7 @@
 
           h3 {
             font-size: 15px;
+            font-weight: 600;
             color: $black;
             margin: 0 0 2px 0;
           }
@@ -88,7 +89,7 @@
             background-color: $lightGray;
             border-radius: 5px;
             width: fit-content;
-            font-weight: 400;
+            font-weight: 500;
             font-size: 13px;
             color: $black;
 
@@ -102,7 +103,7 @@
       .wrapper {
         position: relative;
         padding: 0 16px;
-        max-height: 300px;
+        max-height: 40vh;
         overflow-y: auto;
 
         &:nth-child(2) {
@@ -146,7 +147,6 @@
           resize: none;
           outline: none;
           border: none;
-          font-size: 24px;
           font-size: 15px;
           overflow-y: auto;
           color: $black;
@@ -216,6 +216,7 @@
           h3 {
             font-size: 15px;
             color: $black;
+            font-weight: 500;
             cursor: pointer;
           }
 

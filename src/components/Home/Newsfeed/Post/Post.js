@@ -37,6 +37,7 @@ import {
 
 // Components
 import Comments from "./Comments/Comments";
+import Reactors from "./Reactors/Reactors";
 
 // Main
 const Post = (props) => {
@@ -58,6 +59,7 @@ const Post = (props) => {
   // State
   const [toShowComment, setToShowComment] = useState(false);
   const [toShowDelete, setToShowDelete] = useState(false);
+  const [toShowReactors, setToShowReactors] = useState(false);
 
   // likes
   const likesCount = reactors.length;
@@ -133,9 +135,11 @@ const Post = (props) => {
       </header>
 
       {/* Caption */}
-      <div className={caption}>
-        <pre>{message.trim()}</pre>
-      </div>
+      {message && (
+        <div className={caption}>
+          <pre>{message}</pre>
+        </div>
+      )}
 
       {/* Image */}
       {image && (
@@ -148,7 +152,10 @@ const Post = (props) => {
       {(likesCount > 0 || comments.length > 0) && (
         <div className={reactComentWrapper}>
           {likesCount > 0 && (
-            <div className={reactWrapper}>
+            <div
+              className={reactWrapper}
+              onClick={() => setToShowReactors(true)}
+            >
               <img src={like} alt="" />
               <p>{likesCount}</p>
             </div>
@@ -195,6 +202,11 @@ const Post = (props) => {
           displayName={displayName}
           photoURL={photoURL}
         />
+      )}
+
+      {/* Reactors */}
+      {toShowReactors && (
+        <Reactors reactors={reactors} setToShowReactors={setToShowReactors} />
       )}
     </div>
   );

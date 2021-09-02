@@ -34,12 +34,14 @@
 
           h4 {
             color: $black;
+            font-weight: 600;
             font-size: 13px;
           }
 
           pre {
             color: $black;
             font-size: 15px;
+            font-weight: 300;
             max-width: 100%;
             text-align: left;
             white-space: pre-line;

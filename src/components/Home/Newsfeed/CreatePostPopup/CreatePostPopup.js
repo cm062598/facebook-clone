@@ -238,6 +238,7 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
         </form>
 
         {messageLoading && <Uploading message="Uploading" />}
+
         {imageLoading && (
           <Uploading
             message="Image is still uploading"
