@@ -72,7 +72,7 @@
         position: absolute;
         list-style: none;
         right: 0;
-        bottom: -40px;
+        bottom: -45px;
         background-color: rgb(255, 255, 255);
         box-shadow: 0 4px 7px rgba(0, 0, 0, 0.445);
         color: $textBlack;
@@ -100,15 +100,6 @@
           font-size: 15px;
           margin: 0 8px 0 0;
           transition: 0.1s;
-        }
-
-        .icon {
-          position: absolute;
-          fill: #fff;
-          font-size: 20px;
-          top: -10px;
-          right: 7px;
-          box-shadow: 0 2 3px black;
         }
       }
     }

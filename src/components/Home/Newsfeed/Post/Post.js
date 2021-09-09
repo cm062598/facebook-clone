@@ -5,7 +5,6 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { AiOutlineLike, AiTwotoneLike } from "react-icons/ai";
 import { VscComment } from "react-icons/vsc";
 import { FaTrashAlt } from "react-icons/fa";
-import { BsFillTriangleFill } from "react-icons/bs";
 
 // Data
 import { like } from "./data";
@@ -135,7 +134,6 @@ const Post = (props) => {
               <div className={deleteWrapper} onClick={toDeletePost}>
                 <FaTrashAlt className={trashIcon} />
                 Delete this post
-                <BsFillTriangleFill className={icon} />
               </div>
             )}
           </div>

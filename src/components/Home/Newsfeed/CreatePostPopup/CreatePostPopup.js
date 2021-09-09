@@ -119,16 +119,15 @@ const CreatePostPopup = ({ user, setPopupCreatePost }) => {
       if (e.target.files[0].type.match("image.*")) {
         reader.readAsDataURL(e.target.files[0]);
         reader.onload = (event) => {
-          console.log(event);
-          if (event.total >= 5000000) {
-            setAlert("The image is big! Maximum image file size is 5mb");
+          if (event.total >= 15000000) {
+            setAlert("The image is big! Maximum image file size is 15mb");
           } else {
             setImgURL(event.target.result);
             setAlert("");
           }
         };
       } else {
-        setAlert("Please upload image only!");
+        setAlert("Please upload image or gif only!");
       }
     }
   };
