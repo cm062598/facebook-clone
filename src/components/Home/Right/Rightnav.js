@@ -20,9 +20,12 @@ import {
 import { useCollection } from "react-firebase-hooks/firestore";
 import db from "../../firebase";
 
+// Components
+import SkeletonContacts from "../../Skeleton/SkeletonContacts/SkeletonContacts";
+
 const Rightnav = ({ user }) => {
   const { uid } = user;
-  const [users, loading, error] = useCollection(db.collection("users"));
+  const [users, loading] = useCollection(db.collection("users"));
 
   return (
     <div className={rightNavContainer}>
@@ -41,6 +44,7 @@ const Rightnav = ({ user }) => {
             </div>
           </div>
         </div>
+
         {users && (
           <ul className={userInfo}>
             {users.docs.map(
@@ -52,6 +56,17 @@ const Rightnav = ({ user }) => {
                   </li>
                 )
             )}
+          </ul>
+        )}
+
+        {(loading || users.empty) && (
+          <ul>
+            <SkeletonContacts />
+            <SkeletonContacts />
+            <SkeletonContacts />
+            <SkeletonContacts />
+            <SkeletonContacts />
+            <SkeletonContacts />
           </ul>
         )}
       </div>

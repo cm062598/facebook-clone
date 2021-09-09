@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Icons
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -60,6 +60,14 @@ const Post = (props) => {
   const [toShowComment, setToShowComment] = useState(false);
   const [toShowDelete, setToShowDelete] = useState(false);
   const [toShowReactors, setToShowReactors] = useState(false);
+
+  useEffect(() => {
+    if (toShowReactors) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [toShowReactors]);
 
   // likes
   const likesCount = reactors.length;

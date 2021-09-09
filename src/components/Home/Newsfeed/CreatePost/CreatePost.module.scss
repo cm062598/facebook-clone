@@ -7,6 +7,14 @@
   margin: 0 0 15px 0;
   @include boxShadow;
 
+  @media (max-width: "600px") {
+    border-radius: 0;
+  }
+
+  @media (max-width: "355px") {
+    padding: 0 10px;
+  }
+
   .div1 {
     position: relative;
     display: flex;
@@ -89,6 +97,10 @@
         font-size: 15px;
         font-weight: 600;
         color: $gray;
+
+        @media (max-width: "355px") {
+          font-size: 14px;
+        }
       }
 
       &:hover {

@@ -26,7 +26,7 @@ const Comments = (props) => {
   const addComment = (e) => {
     e.preventDefault();
 
-    if (yourComment) {
+    if (yourComment.trim().length > 0) {
       const docRef = db.collection("Posts").doc(docId);
       docRef.set(
         {

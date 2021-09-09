@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // Styles
 import {
   section,
@@ -13,6 +15,8 @@ import {
 import db, { auth, provider } from "../firebase";
 
 const Login = () => {
+  const [message, setMessage] = useState("");
+
   const signIn = () => {
     auth.signInWithPopup(provider).then((cred) => {
       db.collection("users").doc(cred.user.uid).set({
@@ -21,6 +25,12 @@ const Login = () => {
         status: false,
       });
     });
+  };
+
+  const toShowAvailable = (e) => {
+    e.preventDefault();
+
+    setMessage("Please sign in with gmail!");
   };
 
   return (
@@ -38,8 +48,8 @@ const Login = () => {
             <form>
               <input type="text" placeholder="Email or Phone Number" />
               <input type="text" placeholder="Password" />
-              <button>Log In</button>
-              <p>Don't have an account? </p>
+              <h6>{message}</h6>
+              <button onClick={toShowAvailable}>Log In</button>
             </form>
             <div className={loginWithGoogle}>
               <button onClick={signIn}>

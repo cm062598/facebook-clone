@@ -9,6 +9,7 @@
   justify-self: flex-end;
 
   @media (max-width: "1313px") {
+    grid-column: 2 / 3;
     grid-row: 1 / 2;
   }
 

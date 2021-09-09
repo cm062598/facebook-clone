@@ -1,14 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Styles
 import { section, newsFeedContainer } from "./Newsfeed.module.scss";
-
-// Components
-import Stories from "./Stories/Stories";
-import CreatePost from "./CreatePost/CreatePost";
-import CreateRoom from "./CreateRoom/CreateRoom";
-import Post from "./Post/Post";
-import CreatePostPopup from "./CreatePostPopup/CreatePostPopup";
 
 // React Firebase Hooks
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -16,12 +9,28 @@ import { useCollection } from "react-firebase-hooks/firestore";
 // Firebase
 import db from "../../firebase";
 
+// Components
+import Stories from "./Stories/Stories";
+import CreatePost from "./CreatePost/CreatePost";
+import CreateRoom from "./CreateRoom/CreateRoom";
+import Post from "./Post/Post";
+import CreatePostPopup from "./CreatePostPopup/CreatePostPopup";
+import SkeletonPost from "../../Skeleton/SkeletonPost/SkeletonPost";
+
 const Newsfeed = ({ user }) => {
-  const [posts, loading, error] = useCollection(
+  const [posts, loading] = useCollection(
     db.collection("Posts").orderBy("datePosted", "desc")
   );
 
   const [popupCreatePost, setPopupCreatePost] = useState(false);
+
+  useEffect(() => {
+    if (popupCreatePost) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [popupCreatePost]);
 
   return (
     <div className={section}>
@@ -30,16 +39,9 @@ const Newsfeed = ({ user }) => {
         <CreatePost user={user} setPopupCreatePost={setPopupCreatePost} />
         <CreateRoom user={user} />
 
-        {loading && (
-          <div>
-            <h1>Loading...</h1>
-          </div>
-        )}
-
         {posts?.docs.map((doc) => (
           <React.Fragment key={doc.id}>
-            {(doc.data().caption ||
-              (doc.data().image && doc.data().image !== "waiting")) && (
+            {doc.data().image !== "waiting" && (
               <Post
                 docId={doc.id}
                 user={user}
@@ -56,11 +58,19 @@ const Newsfeed = ({ user }) => {
           </React.Fragment>
         ))}
 
-        <CreatePostPopup
-          user={user}
-          popupCreatePost={popupCreatePost}
-          setPopupCreatePost={setPopupCreatePost}
-        />
+        {(loading || posts.empty) && (
+          <>
+            <SkeletonPost />
+            <SkeletonPost />
+          </>
+        )}
+
+        {popupCreatePost && (
+          <CreatePostPopup
+            user={user}
+            setPopupCreatePost={setPopupCreatePost}
+          />
+        )}
       </div>
     </div>
   );

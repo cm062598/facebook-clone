@@ -1,12 +1,19 @@
 @import "../../../../utilities.scss";
 
 .section {
-  position: relative;
   @include container;
+
+  @media (max-width: "600px") {
+    border-radius: 0;
+  }
 
   header {
     display: flex;
     padding: 20px 20px 5px 20px;
+
+    @media (max-width: "355px") {
+      padding: 10px 10px 5px 10px;
+    }
 
     .imgWrapper {
       margin: 0 10px 0 0;
@@ -76,6 +83,7 @@
         display: flex;
         align-items: center;
         font-size: 15px;
+        white-space: nowrap;
 
         &:hover {
           filter: brightness(0.98);
@@ -109,6 +117,10 @@
   .caption {
     padding: 10px 20px 10px 20px;
 
+    @media (max-width: "355px") {
+      padding: 10px;
+    }
+
     pre {
       text-align: left;
       white-space: pre-line;
@@ -120,7 +132,7 @@
   .imgWrapper {
     img {
       width: 100%;
-      background-color: $gray;
+      background-color: $lightGray;
       display: block;
     }
   }
@@ -129,6 +141,10 @@
     display: flex;
     align-items: center;
     padding: 10px 20px;
+
+    @media (max-width: "355px") {
+      padding: 10px;
+    }
 
     .reactWrapper {
       display: flex;
@@ -172,6 +188,10 @@
 
   .likeCommentWrapper {
     padding: 0 20px;
+
+    @media (max-width: "355px") {
+      padding: 0 10px;
+    }
 
     .wrapper {
       display: flex;

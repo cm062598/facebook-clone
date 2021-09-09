@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 // Data
 import { iconList } from "./data";
@@ -19,7 +19,6 @@ import {
   imageContainer,
   nameContainer,
   imageWrapper,
-  isNotActive,
   disable,
   iconWrapper,
   iconLalagyan,
@@ -34,7 +33,7 @@ import db, { storage } from "../../../firebase";
 // Components
 import Uploading from "./ImageUploading/Uploading";
 
-const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
+const CreatePostPopup = ({ user, setPopupCreatePost }) => {
   const [caption, setCaption] = useState("");
   const [imgURL, setImgURL] = useState(null);
   const [alert, setAlert] = useState("");
@@ -51,10 +50,12 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
 
     setAlert("");
 
-    // Loading
-    setMessageLoading(true);
-
     if (caption.trim().length > 0 || imgURL) {
+      // Loading
+      setMessageLoading(true);
+
+      document.activeElement.blur();
+
       db.collection("Posts")
         .add({
           caption: caption.trim(),
@@ -92,12 +93,12 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
                       { merge: true }
                     );
 
+                    removeImage();
                     setImageLoading(false);
                     setCaption("");
                     setImgURL(null);
                     document.querySelector(".contentEditable").innerText = "";
                     setPopupCreatePost(false);
-                    removeImage();
                   });
               }
             );
@@ -115,17 +116,21 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
     const reader = new FileReader();
 
     if (e.target.files[0]) {
-      reader.readAsDataURL(e.target.files[0]);
-    }
-
-    reader.onload = (event) => {
-      if (event.total >= 5000000) {
-        setAlert("The image is too big! Maximum image file size is 5mb");
+      if (e.target.files[0].type.match("image.*")) {
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = (event) => {
+          console.log(event);
+          if (event.total >= 5000000) {
+            setAlert("The image is big! Maximum image file size is 5mb");
+          } else {
+            setImgURL(event.target.result);
+            setAlert("");
+          }
+        };
       } else {
-        setImgURL(event.target.result);
-        setAlert("");
+        setAlert("Please upload image only!");
       }
-    };
+    }
   };
 
   const removeImage = () => {
@@ -148,7 +153,7 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
   };
 
   return (
-    <section className={`${section} ${!popupCreatePost ? isNotActive : ""}`}>
+    <section className={section}>
       <div className={container}>
         <h1>
           Create Post
@@ -198,7 +203,9 @@ const CreatePostPopup = ({ user, popupCreatePost, setPopupCreatePost }) => {
 
           <div className={wrapper}>
             <div className={wrapper2}>
-              <h3>Add Image to Your Post</h3>
+              <h3 onClick={() => file.current.click()}>
+                Add Image to Your Post
+              </h3>
               <div className={iconWrapper}>
                 {iconList.map((list, index) => (
                   <div key={index} onClick={() => file.current.click()}>

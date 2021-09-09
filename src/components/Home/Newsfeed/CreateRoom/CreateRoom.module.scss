@@ -5,6 +5,14 @@
   padding: 15px 20px;
   display: flex;
 
+  @media (max-width: "600px") {
+    border-radius: 0;
+  }
+
+  @media (max-width: "425px") {
+    display: none;
+  }
+
   .iconContainer {
     display: flex;
     align-items: center;
@@ -50,12 +58,6 @@
 
       @media (max-width: "480px") {
         &:nth-child(4) {
-          display: none;
-        }
-      }
-
-      @media (max-width: "420px") {
-        &:nth-child(3) {
           display: none;
         }
       }
