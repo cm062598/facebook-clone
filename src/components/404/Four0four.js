@@ -1,5 +1,8 @@
 import React from "react";
 
+// assets
+import chain from "../../assets/chain.svg";
+
 import { Link } from "react-router-dom";
 
 //Styles
@@ -16,11 +19,7 @@ const Four0four = () => {
   return (
     <div className={section}>
       <div className={container}>
-        <img
-          src="https://static.xx.fbcdn.net/rsrc.php/yN/r/MnQWcWb6SrY.svg"
-          alt=""
-          className={img}
-        />
+        <img src={chain} alt="" className={img} />
         <h1 className={h1}>This Page Isn't Available</h1>
         <p className={p}>
           The link may be broken, or the page may have been removed. Check to

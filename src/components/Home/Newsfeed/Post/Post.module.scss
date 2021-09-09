@@ -11,7 +11,7 @@
     display: flex;
     padding: 20px 20px 5px 20px;
 
-    @media (max-width: "355px") {
+    @media (max-width: "600px") {
       padding: 10px 10px 5px 10px;
     }
 
@@ -108,8 +108,8 @@
   .caption {
     padding: 10px 20px 10px 20px;
 
-    @media (max-width: "355px") {
-      padding: 10px;
+    @media (max-width: "600px") {
+      padding: 10px 10px;
     }
 
     pre {
@@ -133,7 +133,7 @@
     align-items: center;
     padding: 10px 20px;
 
-    @media (max-width: "355px") {
+    @media (max-width: "600px") {
       padding: 10px;
     }
 
@@ -180,7 +180,7 @@
   .likeCommentWrapper {
     padding: 0 20px;
 
-    @media (max-width: "355px") {
+    @media (max-width: "600px") {
       padding: 0 10px;
     }
 

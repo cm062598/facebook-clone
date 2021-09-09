@@ -8,11 +8,8 @@
   @include boxShadow;
 
   @media (max-width: "600px") {
-    border-radius: 0;
-  }
-
-  @media (max-width: "355px") {
     padding: 0 10px;
+    border-radius: 0;
   }
 
   .div1 {

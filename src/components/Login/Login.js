@@ -47,7 +47,7 @@ const Login = () => {
           <div className={formWrapper}>
             <form>
               <input type="text" placeholder="Email or Phone Number" />
-              <input type="text" placeholder="Password" />
+              <input type="password" placeholder="Password" />
               <h6>{message}</h6>
               <button onClick={toShowAvailable}>Log In</button>
             </form>
